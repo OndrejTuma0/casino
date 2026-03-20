@@ -1,9 +1,11 @@
 const size = 5 // 5x5
-const mines = 5
+let mines = 5
 
 let money = 1000
 let betMultiplier = 1
+let multiplierGrow = 1
 let betAmount = 0
+let mineArr = []
 
 let mineGrid = document.querySelector(".mines")
 let betMultiplierLabel = document.querySelector(".bet__multiplier")
@@ -16,7 +18,9 @@ for (let x = 0; x < size*size; x++) {
 
 function startMines(size, mines) {
     let minesPlaced = 0
-    let mineArr = []
+    mineArr = []
+    multiplierGrow = 1
+    betMultiplier = 1
 
     for (let x = 0; x < size; x++) {
         let row = []
@@ -25,8 +29,8 @@ function startMines(size, mines) {
     }
 
     while (minesPlaced < mines) {
-        let row = Math.floor(Math.random() * 4)
-        let column = Math.floor(Math.random() * 4)
+        let row = Math.floor(Math.random() * size)
+        let column = Math.floor(Math.random() * size)
         let tile = mineArr[row][column]
 
         if (tile == 0) {
@@ -35,8 +39,7 @@ function startMines(size, mines) {
         }
     }
 
-    betMultiplier = 1
-    betMultiplierLabel.textContent = `${betMultiplier}x`
+    betMultiplierLabel.textContent = `${betMultiplier}x (+${(betAmount * betMultiplier).toFixed(2)}$)`
 
     mineGrid.classList.remove("locked")
     mineGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
@@ -53,15 +56,16 @@ function startMines(size, mines) {
     document.querySelectorAll(".mines__tile").forEach((mine) => {
         mine.addEventListener("click", () => {
             let pos = mine.id.split(",")
-            if (mineArr[pos[0]][pos[1]] == 1) {
+            if (mineArr[pos[0]][pos[1]] === 1) {
                 mine.style.backgroundColor = "red"
                 endMines()
             } else {
                 if (mine.style.backgroundColor !== "green") {
                     mine.style.backgroundColor = "green"
-                    betMultiplier += 0.2;
+                    multiplierGrow += 0.04
+                    betMultiplier += ((size**2 / (size**2 - mines)) - 1) * multiplierGrow;
                     betMultiplier = Number(betMultiplier.toFixed(2))
-                    betMultiplierLabel.textContent = `${betMultiplier}x`
+                    betMultiplierLabel.textContent = `${betMultiplier}x (+${(betAmount * betMultiplier).toFixed(2)}$)`
                 }
             }
         })
@@ -73,20 +77,33 @@ function endMines() {
     startMinesButton.classList.remove("locked")
     mineGrid.classList.add("locked")
     betAmount = 0
+
+    document.querySelectorAll(".mines__tile").forEach((mine) => {
+        let pos = mine.id.split(",")
+        let row = parseInt(pos[0])
+        let col = parseInt(pos[1])
+        if (mineArr[row][col] === 1) {
+            mine.style.backgroundColor = "red"
+        } else {
+            mine.style.backgroundColor = "green"
+        }
+    })
 }
 
 startMinesButton.addEventListener("click", () => {
-    let betInput = document.querySelector(".bet__input").value
-    if (!isNaN(betInput) && betInput > 0) {
-        startMines(size, mines)
+    let betInput = parseFloat(document.querySelector(".bet__input").value)
+    let mineInput = parseInt(document.querySelector(".mines__input").value)
+    if (!isNaN(betInput) && betInput > 0 && !isNaN(mineInput) && mineInput > 0 && betInput <= money && mineInput < size**2) {
+        mines = mineInput
         betAmount = betInput
+        startMines(size, mines)
         money -= betInput
-        document.querySelector(".money").textContent = `Money: ${money}`
+        document.querySelector(".money").textContent = `Money: ${money}$`
     }
 })
 
 cashoutButton.addEventListener("click", () => {
     money += betAmount * betMultiplier
     endMines()
-    document.querySelector(".money").textContent = `Money: ${money}`
+    document.querySelector(".money").textContent = `Money: ${money}$`
 })
