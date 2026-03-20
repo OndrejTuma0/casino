@@ -11,7 +11,7 @@ html {
     margin: 1em;
 }
 
-.container2 {
+.container__side {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -34,13 +34,6 @@ html {
     cursor: pointer;
 }
 
-.bet__text {
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    margin: 0;
-}
-
 .bet__input {
     background-color: rgb(137, 22, 148);
     border-radius: 5px;
@@ -49,9 +42,40 @@ html {
     color: white;
 }
 
-.bet__multiplier {
+.bet__text {
     color: white;
     font-weight: bold;
     font-size: 24px;
     margin: 0;
+}
+
+.bet__multiplier {
+    color: white;
+    font-weight: bold;
+    font-size: 36px;
+    margin: 0;
+}
+
+.money {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+}
+
+.button {
+    padding: 0.5em;
+    background-color: rgb(137, 22, 148);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.locked {
+    opacity: 0.5;
+    user-select: none;
+    pointer-events: none;
 }
