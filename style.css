@@ -1,0 +1,57 @@
+html {
+    background-color: rgb(66, 4, 71);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mines {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1em;
+    max-width: fit-content;
+    background-color: rgb(96, 7, 104);
+    padding: 1em;
+}
+
+.mines__tile {
+    padding: 2em;
+    background-color: rgb(137, 22, 148);
+    border-radius: 10px;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.bet__text {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+}
+
+.bet__input {
+    background-color: rgb(137, 22, 148);
+    border-radius: 5px;
+    border: 0;
+    height: 40px;
+    color: white;
+}
+
+.bet__multiplier {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+}
