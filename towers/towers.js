@@ -38,9 +38,7 @@ function drawTower() {
                 if (towerArr[stage].includes(id)) {
                     tile.style.backgroundColor = "green"
                     if (stage === size-1) {
-                        money += betAmount * betMultiplier
-                        endTowers()
-                        document.querySelector(".money").textContent = `Money: ${money.toFixed(2)}$`
+                        endTowers(true)
                         return
                     }
                     document.getElementById(`row${stage}`).classList.add("locked")
@@ -52,15 +50,13 @@ function drawTower() {
                     betMultiplierLabel.textContent = `${betMultiplier}x (+${(betAmount * betMultiplier).toFixed(2)}$)`
                 } else {
                     tile.style.backgroundColor = "red"
-                    endTowers()
+                    endTowers(false)
                 }
             } else {
                 if (id === towerArr[stage]) {
                     tile.style.backgroundColor = "green"
                     if (stage === size-1) {
-                        money += betAmount * betMultiplier
-                        endTowers()
-                        document.querySelector(".money").textContent = `Money: ${money.toFixed(2)}$`
+                        endTowers(true)
                         return
                     }
                     document.getElementById(`row${stage}`).classList.add("locked")
@@ -72,7 +68,7 @@ function drawTower() {
                     betMultiplierLabel.textContent = `${betMultiplier}x (+${(betAmount * betMultiplier).toFixed(2)}$)`
                 } else {
                     tile.style.backgroundColor = "red"
-                    endTowers()
+                    endTowers(false)
                 }
             }
         })
@@ -108,14 +104,17 @@ function startTowers() {
             towerArr.push(Math.floor(Math.random() * 3))
         }
     }
-    console.log(towerArr)
 }
 
-function endTowers() {
+function endTowers(win) {
     towersGrid.classList.add("locked")
     startButton.classList.remove("locked")
     cashoutButton.classList.add("locked")
     difficulties.classList.remove("locked")
+    if (win === true) {
+        money += betAmount * betMultiplier
+        document.querySelector(".money").textContent = `Money: ${money.toFixed(2)}$`
+    }
     betAmount = 0
 }
 
@@ -139,9 +138,7 @@ startButton.addEventListener("click", () => {
 })
 
 cashoutButton.addEventListener("click", () => {
-    money += betAmount * betMultiplier
-    endTowers()
-    document.querySelector(".money").textContent = `Money: ${money.toFixed(2)}$`
+    endTowers(true)
 })
 
 drawTower()
