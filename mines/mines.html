@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>GAMBA</title>
+</head>
+<body>
+    <div class="container">
+        <div class="mines locked"></div>
+
+        <div class="container__side">
+            <div class="money">Money: 1000.00$</div>
+
+            <div class="mines__text">Mines:</div>
+            <input type="text" class="mines__input">
+
+            <div class="bet__text">Bet Amount:</div>
+            <input type="text" class="bet__input">
+
+            <button class="button" id="startMines">Start</button>
+
+            <div class="bet__multiplier">1x (+0.00$)</div>
+
+            <button class="button-green-outline locked" id="cashout">Cash out</button>
+        </div>
+    </div>
+
+    <script src="mines.js"></script>
+</body>
+</html>

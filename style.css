@@ -29,7 +29,7 @@ html {
 .mines__tile {
     padding: 2em;
     background-color: rgb(137, 22, 148);
-    border-radius: 10px;
+    border-radius: 8px;
     aspect-ratio: 1 / 1;
     cursor: pointer;
 }
@@ -121,4 +121,72 @@ html {
     opacity: 0.5;
     user-select: none;
     pointer-events: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.game {
+    background-color: rgb(137, 22, 148);
+    color: white;
+    padding: 3em;
+    font-weight: bold;
+    font-size: 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.game:hover {
+    background-color: rgb(172, 30, 185);
+}
+
+.towers {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: rgb(96, 7, 104);
+    padding: 1em;
+    max-width: fit-content;
+}
+
+.towers__tile {
+    background-color: rgb(137, 22, 148);
+    padding: 2em;
+    cursor: pointer;
+    width: 40px;
+    border-radius: 8px;
+}
+
+.towers__difficulties {
+    display: flex;
+    gap: 0.5em;
+}
+
+.difficulty {
+    color: white;
+    background-color: rgb(108, 7, 117);
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.difficulty--selected {
+    background-color: rgb(173, 25, 187);
+}
+
+.towers__text {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+}
+
+.towers__row {
+    display: flex;
+    gap: 1em;
 }

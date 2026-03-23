@@ -98,12 +98,12 @@ startMinesButton.addEventListener("click", () => {
         betAmount = betInput
         startMines(size, mines)
         money -= betInput
-        document.querySelector(".money").textContent = `Money: ${money}$`
+        document.querySelector(".money").textContent = `Money: ${money.toFixed(2)}$`
     }
 })
 
 cashoutButton.addEventListener("click", () => {
     money += betAmount * betMultiplier
     endMines()
-    document.querySelector(".money").textContent = `Money: ${money}$`
+    document.querySelector(".money").textContent = `Money: ${money.toFixed(2)}$`
 })
