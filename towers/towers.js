@@ -34,7 +34,7 @@ function drawTower() {
     document.querySelectorAll(".towers__tile").forEach((tile) => {
         tile.addEventListener("click", () => {
             let id = Number(tile.id)
-            if (difficulty == "easy") {
+            if (difficulty === "easy") {
                 if (towerArr[stage].includes(id)) {
                     tile.style.backgroundColor = "green"
                     if (stage === size-1) {
@@ -88,14 +88,14 @@ function startTowers() {
     for (let x = 0; x < size; x++) {
         if (difficulty === "easy") {
             betMultiGrow = 0.42
-            let idkCro = []
-            idkCro.push(Math.floor(Math.random() * 3))
-            let jew
+            let answers = []
+            answers.push(Math.floor(Math.random() * 3))
+            let ans
             do {
-                jew = Math.floor(Math.random() * 3)
-            } while (idkCro.includes(jew))
-            idkCro.push(jew)
-            towerArr.push(idkCro)
+                ans = Math.floor(Math.random() * 3)
+            } while (answers.includes(ans))
+            answers.push(ans)
+            towerArr.push(answers)
         } else if (difficulty === "normal") {
             betMultiGrow = 0.9
             towerArr.push(Math.floor(Math.random() * 2))

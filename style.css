@@ -3,9 +3,13 @@ html {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    margin: 0;
+}
+
 .container {
     display: flex;
-    gap: 10px;
+    gap: 2em;
     justify-content: center;
     align-items: center;
     margin: 1em;
@@ -24,6 +28,7 @@ html {
     max-width: fit-content;
     background-color: rgb(96, 7, 104);
     padding: 1em;
+    border-radius: 10px;
 }
 
 .mines__tile {
@@ -127,6 +132,7 @@ html {
     display: flex;
     justify-content: center;
     gap: 1em;
+    margin: 1em;
 }
 
 .game {
@@ -189,4 +195,69 @@ html {
 .towers__row {
     display: flex;
     gap: 1em;
+}
+
+.header {
+    width: 100%;
+    background-color: rgb(137, 22, 148);
+    padding: 1em;
+}
+
+.header__nav {
+    display: flex;
+    gap: 1em;
+}
+
+.header__nav a {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.plinko {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(96, 7, 104);
+    max-width: fit-content;
+    padding: 3em;
+    border-radius: 10px;
+    gap: 1em;
+}
+
+.plinko__dots {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.plinko__row {
+    display: flex;
+    gap: 2.5em;
+    justify-content: center;
+}
+
+.plinko__dot {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: rgb(149, 32, 160);
+}
+
+.plinko__last {
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.plinko__lastdot {
+    width: 40px;
+    height: fit-content;
+    padding: 0.1em;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
 }
